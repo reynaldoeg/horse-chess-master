@@ -70,9 +70,16 @@ function SelectCell(x, y){
 
 	board[x][y] = 1;
 	PaintCell(x, y, "green");
+	PaintHorseCell(x, y, "green");
 }
 
 function PaintCell(x, y, color){
 	cell = document.getElementById("c"+x+y);
 	cell.style.background = color;
+}
+
+function PaintHorseCell(x, y, color){
+	cell = document.getElementById("c"+x+y);
+	cell.style.background = color;
+	cell.innerHTML = "<img src='horse.gif'>";
 }
