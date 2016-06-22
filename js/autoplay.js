@@ -11,9 +11,15 @@ function autoplay(){
 	for( i = 0 ; i < 8 ; i++ ){
 		board[i] = new Array(8);
 	}
+	ClearBoard();
 
 	ResetTime();
 	StarTime();
+
+	x = Math.round( Math.random() * 7 );
+	y = Math.round( Math.random() * 7 );
+
+	SelectCell(x, y);
 
 }
 
@@ -58,4 +64,15 @@ function ClearBoard(){
 		}
 	}
 
+}
+
+function SelectCell(x, y){
+
+	board[x][y] = 1;
+	PaintCell(x, y, "green");
+}
+
+function PaintCell(x, y, color){
+	cell = document.getElementById("c"+x+y);
+	cell.style.background = color;
 }
