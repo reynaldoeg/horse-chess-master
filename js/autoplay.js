@@ -2,9 +2,15 @@ var secs;
 var mins;
 var cronometer;
 
+var board = new Array(8);
+
 autoplay();
 
 function autoplay(){
+
+	for( i = 0 ; i < 8 ; i++ ){
+		board[i] = new Array(8);
+	}
 
 	ResetTime();
 	StarTime();
@@ -42,4 +48,14 @@ function StarTime(){
 
 function ResetTime(){
 	clearInterval(cronometer);
+}
+
+function ClearBoard(){
+
+	for( i = 0 ; i < 8 ; i++ ){
+		for( j = 0 ; j < 8 ; j++ ){
+			board[i][j] = 0;
+		}
+	}
+
 }
