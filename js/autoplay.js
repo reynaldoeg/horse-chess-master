@@ -73,6 +73,10 @@ function SelectCell(x, y){
 	PaintHorseCell(x, y, "green");
 }
 
+function CheckCell(x, y){
+	SelectCell(x, y);
+}
+
 function PaintCell(x, y, color){
 	cell = document.getElementById("c"+x+y);
 	cell.style.background = color;
