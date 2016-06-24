@@ -82,7 +82,17 @@ function SelectCell(x, y){
 }
 
 function CheckCell(x, y){
-	SelectCell(x, y);
+	
+	CheckTrue = false;
+
+	dif_x = Math.abs(x - CellSelected_x);
+	dif_y = Math.abs(y - CellSelected_y);
+
+	if( (dif_x == 1 && dif_y == 2) || (dif_x == 2 && dif_y == 1)  ) CheckTrue = true;
+
+	if( board[x][y] == 1 ) CheckTrue = false;
+
+	if (CheckTrue) SelectCell(x, y);
 }
 
 function PaintCell(x, y, color){
