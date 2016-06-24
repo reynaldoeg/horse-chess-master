@@ -7,9 +7,13 @@ var board = new Array(8);
 var CellSelected_x;
 var CellSelected_y;
 
+var Moves;
+
 autoplay();
 
 function autoplay(){
+
+	Moves = 64;
 
 	for( i = 0 ; i < 8 ; i++ ){
 		board[i] = new Array(8);
@@ -74,11 +78,16 @@ function ClearBoard(){
 
 function SelectCell(x, y){
 
+	Moves--;
+	document.getElementById("moves").innerHTML = Moves;
+
 	board[x][y] = 1;
 	PaintCell(CellSelected_x, CellSelected_y, "orange");
 	PaintHorseCell(x, y, "green");
 	CellSelected_x = x;
 	CellSelected_y = y;
+
+	Check_SuccessfullEnd();
 }
 
 function CheckCell(x, y){
@@ -104,4 +113,12 @@ function PaintHorseCell(x, y, color){
 	cell = document.getElementById("c"+x+y);
 	cell.style.background = color;
 	cell.innerHTML = "<img src='horse.gif'>";
+}
+
+function Check_SuccessfullEnd(){
+
+	SuccessfullEnd = true;
+	if(Moves > 0) SuccessfullEnd = false;
+	if(SuccessfullEnd) alert("Partida ganada");
+
 }
