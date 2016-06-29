@@ -8,6 +8,7 @@ var CellSelected_x;
 var CellSelected_y;
 
 var Moves;
+var Options;
 
 autoplay();
 
@@ -88,6 +89,7 @@ function SelectCell(x, y){
 	CellSelected_y = y;
 
 	Check_SuccessfullEnd();
+	Check_GameOver(x, y);
 }
 
 function CheckCell(x, y){
@@ -121,4 +123,34 @@ function Check_SuccessfullEnd(){
 	if(Moves > 0) SuccessfullEnd = false;
 	if(SuccessfullEnd) alert("Partida ganada");
 
+}
+
+function Check_GameOver(x, y){
+
+	Options = 0;
+
+	Check_Moves(x, y, 1, 2);
+	Check_Moves(x, y, 2, 1);
+	Check_Moves(x, y, 1, -2);
+	Check_Moves(x, y, 2, -1);
+
+	Check_Moves(x, y, -1, 2);
+	Check_Moves(x, y, -2, 1);
+	Check_Moves(x, y, -1, -2);
+	Check_Moves(x, y, -2, -1);
+
+
+	document.getElementById("options").innerHTML = Options;
+
+	if( !Options ) alert("Game Over");
+}
+
+function Check_Moves(x, y, mov_x, mov_y){
+
+	option_x = x + mov_x;
+	option_y = y + mov_y;
+
+	if( option_x < 8 && option_y < 8 && option_x >= 0 && option_y >= 0 ){
+		if (board[option_x][option_y] == 0) Options++;
+	}
 }
